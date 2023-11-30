@@ -67,7 +67,7 @@ awk '{if ($3>=95 && ($4/$13)>=0.7) print $0}' BH_{metagenome}.blast > 95_70_BH_{
 
 Example of projection graph:
 
-![figure](/rarefaction/projection.pdf)
+![figure](/rarefaction/projection.png)
 
 
 
