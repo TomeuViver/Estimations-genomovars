@@ -15,8 +15,25 @@ conda activate blast
 conda install -c bioconda blast
 ```
 
+## Map metagenomic reads to reference genomes
 
+1- Concatenate all reference genomes in a single file
 
+```
+cat *.fna > All_genomes.fna
+```
+
+2- Make blast database
+
+```
+makeblastdb -in All_Genomes.fna -out All_Genomes.db -dbtype nucl
+```
+
+3- Run blast tool
+
+```
+blastn -query {metagenome}.CoupledReads.fa -db All_Genomes.db -out {metagenome}.blast -num_threads 18 -outfmt "6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore qlen slen"
+```
 
 
 
