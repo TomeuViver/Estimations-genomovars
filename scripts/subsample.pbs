@@ -1,0 +1,19 @@
+#!/bin/bash
+
+#$ -q std.q
+#$ -N Salinibacter_subsample
+#$ -cwd
+#$ -l h_rt=12:00:00
+#$ -t 1-100
+
+cd "$HOME/data/projects/salinibacter/Rarefaction_strains"
+. ~/.bashrc
+load_miga
+
+# sample=E1_M13
+
+./subsample.bash \
+  "CORE_GENES/list_PH1.txt" "CORE_GENES/PH1_${sample}_CORE.blast.id993" \
+  > "subsample/$sample/sample-${SGE_TASK_ID}.txt"
+
+
