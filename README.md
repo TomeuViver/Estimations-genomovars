@@ -69,6 +69,8 @@ Example of projection graph:
 
 ![figure](/rarefaction/projection.png)
 
+4- The number of estimated genomovar predicted will be given in the projection.tsv file.
+
 
 
 
