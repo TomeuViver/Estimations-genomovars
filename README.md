@@ -35,6 +35,15 @@ makeblastdb -in All_Genomes.fna -out All_Genomes.db -dbtype nucl
 blastn -query {metagenome}.CoupledReads.fa -db All_Genomes.db -out {metagenome}.blast -num_threads 18 -outfmt "6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore qlen slen"
 ```
 
+4- Filter the output blast table by best hit and 95% sequence identity and 70% of fraction covered by the metagenomic read
+
+```
+sort {metagenome}.blast | BlastTab.best_hit_sorted.pl > BH_{metagenome}.blast
+
+awk '{if ($3>=95 && ($4/$13)>=0.7) print $0}' BH_{metagenome}.blast > 95_70_BH_{metagenome}.blast
+
+```
+
 
 
 
